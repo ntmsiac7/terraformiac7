@@ -31,6 +31,13 @@ resource "azurerm_resource_group" "example3" {
   name     = "hanumanthiac7_it-rg"
   location = "West Europe"
 }
+
+
+# Create a resource group
+resource "azurerm_resource_group" "example4" {
+  name     = "hanumanthiac7_it-sales"
+  location = "West Europe"
+}
 /*
 # Create a resource group from RG
 resource "azurerm_resource_group" "exevar1" {
