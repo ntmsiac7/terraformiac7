@@ -1,0 +1,56 @@
+/*# Configure the Microsoft Azure Provider
+provider "azurerm" {
+ 
+}
+
+
+# Azure Provider source and version being used
+terraform {
+  required_providers {
+    azurerm = "<=2.90.0"
+    }
+}
+*/
+
+/*
+>=2.90.0 ===> greater then
+<=2.90.0 ===> less then
+~>2.0.1 ===> 2.x
+~>2.0.1 ===> 2.0.x
+>=2.10, <=2.30 ==> Any version between 
+*/
+
+provider "azurerm"{
+    alias = "cu"                /*for multiple providers we can use alias*/
+     region = "central-us"
+
+ }
+
+
+ provider "azurerm"{
+     alias = "eu"               /*for multiple providers we can use alias*/
+     region = "east-us"
+     
+ }
+
+ # Create a resource group
+resource "azurerm_resource_group" "example" {
+
+  provider = azurerm.cu
+  name     = "example-resources"
+  
+}
+
+resource "azurerm_resource_group" "example1" {
+
+  provider = azurerm.eu
+  name     = "example1-resources"
+  
+}
+
+
+resource "azurerm_resource_group" "example2" {
+
+    name     = "example2-resources"
+    location = "west europe"
+}
